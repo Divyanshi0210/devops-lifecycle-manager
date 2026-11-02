@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOpsFlow | Projects</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="workflow"></i>
+            </div>
+            <span>DevOps<span class="brand-light">Flow</span></span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a class="nav-link" href="index.html">
+                <i data-lucide="layout-dashboard"></i> Dashboard
+            </a>
+
+            <a class="nav-link active" href="projects.html">
+                <i data-lucide="folder-kanban"></i> Projects
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="git-branch"></i> GitHub Integration
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="workflow"></i> CI/CD Pipeline
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="container"></i> Docker Management
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="cloud"></i> Cloud Deployment
+            </a>
+        </nav>
+
+        <p class="menu-label second-label">MONITORING</p>
+
+        <nav>
+            <a class="nav-link" href="#">
+                <i data-lucide="activity"></i> Monitoring
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="file-text"></i> Logs & Reports
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="settings"></i> Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Admin User</strong>
+                    <small>Project Administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Project Management</h2>
+                <p>Create, manage and track your development projects.</p>
+            </div>
+
+            <div class="top-actions">
+                <span class="system-status">
+                    <span class="status-dot"></span> System Online
+                </span>
+            </div>
+
+        </header>
+
+
+        <section class="welcome-banner">
+
+            <div>
+                <span class="eyebrow">PROJECT WORKSPACE</span>
+
+                <h1>Manage Your Projects</h1>
+
+                <p>Organize all your software development projects in one place.</p>
+
+                <button class="primary-button" id="openFormBtn">
+                    <i data-lucide="plus"></i> Create Project
+                </button>
+            </div>
+
+            <div class="banner-icon">
+                <i data-lucide="folder-kanban"></i>
+            </div>
+
+        </section>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Projects</span>
+                    <i data-lucide="folder"></i>
+                </div>
+                <h2 id="totalProjects">--</h2>
+                <small>All registered projects</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Active Projects</span>
+                    <i data-lucide="activity"></i>
+                </div>
+                <h2 id="activeProjects">--</h2>
+                <small>Currently active</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Planning</span>
+                    <i data-lucide="clipboard-list"></i>
+                </div>
+                <h2 id="planningProjects">--</h2>
+                <small>Projects in planning</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Backend Status</span>
+                    <i data-lucide="server"></i>
+                </div>
+                <h2 id="backendStatus">--</h2>
+                <small>API connection</small>
+            </div>
+
+        </section>
+
+
+        <section class="panel" id="projectFormPanel" hidden>
+
+            <div class="panel-heading">
+                <div>
+                    <h3>Create New Project</h3>
+                    <p>Enter your project details below.</p>
+                </div>
+            </div>
+
+            <form id="projectForm" class="project-form">
+
+                <label for="projectName">Project Name</label>
+                <input
+                    id="projectName"
+                    type="text"
+                    placeholder="Enter project name"
+                    required
+                >
+
+                <label for="projectDescription">Description</label>
+                <textarea
+                    id="projectDescription"
+                    placeholder="Describe your project"
+                    rows="3"
+                ></textarea>
+
+                <label for="projectTechnology">Technologies</label>
+                <input
+                    id="projectTechnology"
+                    type="text"
+                    placeholder="Example: React, Node.js, Docker"
+                >
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">
+                        <i data-lucide="plus"></i> Save Project
+                    </button>
+
+                    <button type="button" class="action-button" id="cancelFormBtn">
+                        Cancel
+                    </button>
+                </div>
+
+                <p id="formMessage" role="status"></p>
+
+            </form>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-heading">
+                <div>
+                    <h3>All Projects</h3>
+                    <p>Your registered development projects</p>
+                </div>
+
+                <span class="tag success" id="projectLoadStatus">
+                    Loading
+                </span>
+            </div>
+
+            <div class="projects-list" id="projectsList">
+                <p>Loading projects...</p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            DevOpsFlow · Project Management
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="projects.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

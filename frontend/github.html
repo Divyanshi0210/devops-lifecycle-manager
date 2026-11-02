@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOpsFlow | GitHub Integration</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon"><i data-lucide="workflow"></i></div>
+            <span>DevOps<span class="brand-light">Flow</span></span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a class="nav-link" href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a class="nav-link" href="projects.html"><i data-lucide="folder-kanban"></i> Projects</a>
+            <a class="nav-link active" href="github.html"><i data-lucide="git-branch"></i> GitHub Integration</a>
+            <a class="nav-link" href="#"><i data-lucide="workflow"></i> CI/CD Pipeline</a>
+            <a class="nav-link" href="#"><i data-lucide="container"></i> Docker Management</a>
+            <a class="nav-link" href="#"><i data-lucide="cloud"></i> Cloud Deployment</a>
+        </nav>
+
+        <p class="menu-label second-label">MONITORING</p>
+
+        <nav>
+            <a class="nav-link" href="#"><i data-lucide="activity"></i> Monitoring</a>
+            <a class="nav-link" href="#"><i data-lucide="file-text"></i> Logs & Reports</a>
+            <a class="nav-link" href="#"><i data-lucide="settings"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Admin User</strong>
+                    <small>Project Administrator</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2>GitHub Integration</h2>
+                <p>Connect and manage your source code repositories.</p>
+            </div>
+            <span class="system-status">
+                <span class="status-dot"></span> Integration Center
+            </span>
+        </header>
+
+        <section class="welcome-banner">
+            <div>
+                <span class="eyebrow">SOURCE CODE MANAGEMENT</span>
+                <h1>Connect with GitHub</h1>
+                <p>Explore repositories, branches and recent commits.</p>
+            </div>
+            <div class="banner-icon"><i data-lucide="github"></i></div>
+        </section>
+
+        <section class="panel github-connect">
+
+            <div class="panel-heading">
+                <div>
+                    <h3>Repository Connection</h3>
+                    <p>Enter the URL of a public GitHub repository.</p>
+                </div>
+                <span class="tag success">GitHub API</span>
+            </div>
+
+            <form id="githubForm">
+                <label for="repoUrl">GitHub Repository URL</label>
+
+                <div class="github-input-row">
+                    <input
+                        type="url"
+                        id="repoUrl"
+                        placeholder="https://github.com/owner/repository"
+                        required
+                    >
+
+                    <button class="primary-button" type="submit" id="connectBtn">
+                        <i data-lucide="link"></i> Connect
+                    </button>
+                </div>
+
+                <p id="githubMessage" role="status"></p>
+            </form>
+        </section>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Repository</span>
+                    <i data-lucide="book-git"></i>
+                </div>
+                <h2 id="repoName">--</h2>
+                <small>Repository name</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Stars</span>
+                    <i data-lucide="star"></i>
+                </div>
+                <h2 id="repoStars">--</h2>
+                <small>GitHub stars</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Forks</span>
+                    <i data-lucide="git-fork"></i>
+                </div>
+                <h2 id="repoForks">--</h2>
+                <small>Repository forks</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Branches</span>
+                    <i data-lucide="git-branch"></i>
+                </div>
+                <h2 id="repoBranches">--</h2>
+                <small>Total branches</small>
+            </div>
+
+        </section>
+
+        <section class="panel" id="repositoryPanel" hidden>
+
+            <div class="panel-heading">
+                <div>
+                    <h3 id="repositoryTitle">Repository Details</h3>
+                    <p id="repositoryDescription">Repository information</p>
+                </div>
+                <span class="tag success" id="repoVisibility">Public</span>
+            </div>
+
+            <div class="repo-details">
+                <div>
+                    <small>Owner</small>
+                    <strong id="repoOwner">--</strong>
+                </div>
+                <div>
+                    <small>Default Branch</small>
+                    <strong id="repoDefaultBranch">--</strong>
+                </div>
+                <div>
+                    <small>Language</small>
+                    <strong id="repoLanguage">--</strong>
+                </div>
+                <div>
+                    <small>Last Updated</small>
+                    <strong id="repoUpdated">--</strong>
+                </div>
+            </div>
+
+            <a id="repoLink" href="#" target="_blank" rel="noopener noreferrer">
+                Open Repository on GitHub ↗
+            </a>
+        </section>
+
+        <section class="content-grid">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Repository Branches</h3>
+                        <p>Available branches</p>
+                    </div>
+                </div>
+
+                <div id="branchesList">
+                    <p class="empty-message">Connect a repository to view branches.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Recent Commits</h3>
+                        <p>Latest code changes</p>
+                    </div>
+                </div>
+
+                <div id="commitsList">
+                    <p class="empty-message">Connect a repository to view commits.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            DevOpsFlow · GitHub Integration
+        </footer>
+
+    </main>
+</div>
+
+<script src="github.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

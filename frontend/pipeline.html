@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOpsFlow | CI/CD Pipeline</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon"><i data-lucide="workflow"></i></div>
+            <span>DevOps<span class="brand-light">Flow</span></span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+        <nav>
+            <a class="nav-link" href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a class="nav-link" href="projects.html"><i data-lucide="folder-kanban"></i> Projects</a>
+            <a class="nav-link" href="github.html"><i data-lucide="git-branch"></i> GitHub Integration</a>
+            <a class="nav-link active" href="pipeline.html"><i data-lucide="workflow"></i> CI/CD Pipeline</a>
+            <a class="nav-link" href="#"><i data-lucide="container"></i> Docker Management</a>
+            <a class="nav-link" href="#"><i data-lucide="cloud"></i> Cloud Deployment</a>
+        </nav>
+
+        <p class="menu-label second-label">MONITORING</p>
+        <nav>
+            <a class="nav-link" href="#"><i data-lucide="activity"></i> Monitoring</a>
+            <a class="nav-link" href="#"><i data-lucide="file-text"></i> Logs & Reports</a>
+            <a class="nav-link" href="#"><i data-lucide="settings"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Admin User</strong>
+                    <small>Project Administrator</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2>CI/CD Pipeline</h2>
+                <p>Automate code testing, building and deployment.</p>
+            </div>
+            <span class="system-status">
+                <span class="status-dot"></span> Pipeline Center
+            </span>
+        </header>
+
+        <section class="welcome-banner">
+            <div>
+                <span class="eyebrow">CONTINUOUS INTEGRATION & DELIVERY</span>
+                <h1>Automate Your Workflow</h1>
+                <p>Build, test and deploy your applications efficiently.</p>
+                <button class="primary-button" id="refreshBtn">
+                    <i data-lucide="refresh-cw"></i> Refresh Runs
+                </button>
+            </div>
+            <div class="banner-icon"><i data-lucide="workflow"></i></div>
+        </section>
+
+        <section class="panel pipeline-connect">
+            <div class="panel-heading">
+                <div>
+                    <h3>GitHub Actions Connection</h3>
+                    <p>Enter a public repository to view its workflow runs.</p>
+                </div>
+                <span class="tag success">GitHub API</span>
+            </div>
+
+            <form id="pipelineForm">
+                <label for="pipelineRepo">Repository URL</label>
+                <div class="pipeline-input-row">
+                    <input
+                        id="pipelineRepo"
+                        type="url"
+                        placeholder="https://github.com/owner/repository"
+                        required
+                    >
+                    <button class="primary-button" type="submit">
+                        Connect
+                    </button>
+                </div>
+                <p id="pipelineMessage" role="status"></p>
+            </form>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Runs</span>
+                    <i data-lucide="workflow"></i>
+                </div>
+                <h2 id="totalRuns">--</h2>
+                <small>Workflow executions</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Successful</span>
+                    <i data-lucide="check-circle"></i>
+                </div>
+                <h2 id="successfulRuns">--</h2>
+                <small>Successful runs</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Failed</span>
+                    <i data-lucide="x-circle"></i>
+                </div>
+                <h2 id="failedRuns">--</h2>
+                <small>Failed runs</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>In Progress</span>
+                    <i data-lucide="clock"></i>
+                </div>
+                <h2 id="runningRuns">--</h2>
+                <small>Currently running</small>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Pipeline Stages</h3>
+                    <p>Typical software delivery lifecycle</p>
+                </div>
+                <span class="tag success">Workflow Overview</span>
+            </div>
+
+            <div class="pipeline-visual">
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon"><i data-lucide="code-2"></i></div>
+                    <strong>Code</strong>
+                    <small>Git Push</small>
+                </div>
+                <div class="pipeline-connector"></div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon"><i data-lucide="test-tube"></i></div>
+                    <strong>Test</strong>
+                    <small>Code Checks</small>
+                </div>
+                <div class="pipeline-connector"></div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon"><i data-lucide="package"></i></div>
+                    <strong>Build</strong>
+                    <small>Docker Image</small>
+                </div>
+                <div class="pipeline-connector"></div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon"><i data-lucide="rocket"></i></div>
+                    <strong>Deploy</strong>
+                    <small>Cloud Server</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>GitHub Actions Runs</h3>
+                    <p>Latest workflow executions from your repository</p>
+                </div>
+                <span class="tag success" id="runStatus">Waiting</span>
+            </div>
+
+            <div id="workflowRuns">
+                <p class="empty-message">
+                    Connect a repository to view its actual GitHub Actions runs.
+                </p>
+            </div>
+        </section>
+
+        <footer>DevOpsFlow · CI/CD Pipeline Management</footer>
+
+    </main>
+</div>
+
+<script src="pipeline.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>

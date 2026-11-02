@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevOpsFlow | Lifecycle Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="workflow"></i>
+            </div>
+            <span>DevOps<span class="brand-light">Flow</span></span>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a class="nav-link active" href="#">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="folder-kanban"></i>
+                Projects
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="git-branch"></i>
+                GitHub Integration
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="workflow"></i>
+                CI/CD Pipeline
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="container"></i>
+                Docker Management
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="cloud"></i>
+                Cloud Deployment
+            </a>
+        </nav>
+
+        <p class="menu-label second-label">MONITORING</p>
+
+        <nav>
+            <a class="nav-link" href="#">
+                <i data-lucide="activity"></i>
+                Monitoring
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="file-text"></i>
+                Logs & Reports
+            </a>
+
+            <a class="nav-link" href="#">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">A</div>
+
+                <div>
+                    <strong>Admin User</strong>
+                    <small>Project Administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h2>Dashboard Overview</h2>
+                <p>Welcome back! Here's what's happening with your projects.</p>
+            </div>
+
+            <div class="top-actions">
+
+                <span class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </span>
+
+                <button class="icon-button" aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME BANNER -->
+        <section class="welcome-banner">
+
+            <div>
+
+                <span class="eyebrow">
+                    DEVOPS LIFECYCLE MANAGEMENT
+                </span>
+
+                <h1>Build. Test. Deploy. Monitor.</h1>
+
+                <p>
+                    Manage your complete DevOps workflow from one place.
+                </p>
+
+                <button class="primary-button" id="pipelineBtn">
+                    <i data-lucide="play"></i>
+                    Run Pipeline
+                </button>
+
+            </div>
+
+            <div class="banner-icon">
+                <i data-lucide="workflow"></i>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS CARDS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span>Total Projects</span>
+                    <i data-lucide="folder-kanban"></i>
+                </div>
+
+                <h2 id="projectCount">--</h2>
+                <small>Managed projects</small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span>Pipeline Runs</span>
+                    <i data-lucide="git-branch"></i>
+                </div>
+
+                <h2 id="pipelineCount">--</h2>
+                <small>Build and test executions</small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span>Active Containers</span>
+                    <i data-lucide="container"></i>
+                </div>
+
+                <h2 id="containerCount">--</h2>
+                <small>Docker containers</small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span>Deployments</span>
+                    <i data-lucide="cloud"></i>
+                </div>
+
+                <h2 id="deploymentCount">--</h2>
+                <small>Total deployments</small>
+
+            </div>
+
+        </section>
+
+
+        <!-- PIPELINE AND SYSTEM HEALTH -->
+        <section class="content-grid">
+
+
+            <!-- CI/CD PIPELINE -->
+            <div class="panel pipeline-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h3>CI/CD Pipeline</h3>
+                        <p>Latest pipeline execution</p>
+                    </div>
+
+                    <span class="tag success" id="pipelineStatus">
+                        Waiting
+                    </span>
+
+                </div>
+
+
+                <div class="pipeline-stages">
+
+                    <div class="stage">
+
+                        <div class="stage-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+
+                        <strong>Code</strong>
+                        <small>Pending</small>
+
+                    </div>
+
+
+                    <div class="stage-line"></div>
+
+
+                    <div class="stage">
+
+                        <div class="stage-icon">
+                            <i data-lucide="test-tube"></i>
+                        </div>
+
+                        <strong>Test</strong>
+                        <small>Pending</small>
+
+                    </div>
+
+
+                    <div class="stage-line"></div>
+
+
+                    <div class="stage">
+
+                        <div class="stage-icon">
+                            <i data-lucide="package"></i>
+                        </div>
+
+                        <strong>Build</strong>
+                        <small>Pending</small>
+
+                    </div>
+
+
+                    <div class="stage-line"></div>
+
+
+                    <div class="stage">
+
+                        <div class="stage-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+
+                        <strong>Deploy</strong>
+                        <small>Pending</small>
+
+                    </div>
+
+                </div>
+
+
+                <p class="pipeline-note" id="pipelineMessage">
+                    Waiting for backend connection...
+                </p>
+
+            </div>
+
+
+            <!-- SYSTEM HEALTH -->
+            <div class="panel health-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h3>System Health</h3>
+                        <p>Application overview</p>
+                    </div>
+
+                    <span class="health-indicator" id="overallHealth">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>Frontend</span>
+
+                    <span class="health-value" id="frontendHealth">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>Backend</span>
+
+                    <span class="health-value" id="backendHealth">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>Database</span>
+
+                    <span class="health-value pending" id="databaseHealth">
+                        Not connected
+                    </span>
+
+                </div>
+
+
+                <div class="health-row">
+
+                    <span>Cloud Server</span>
+
+                    <span class="health-value pending" id="cloudHealth">
+                        Not connected
+                    </span>
+
+                </div>
+
+
+                <small class="demo-note">
+                    Database and cloud monitoring integrations are pending.
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT ACTIVITIES AND QUICK ACTIONS -->
+        <section class="content-grid bottom-grid">
+
+
+            <!-- RECENT ACTIVITIES -->
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h3>Recent Activities</h3>
+                        <p>Latest project events</p>
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <span class="activity-dot green"></span>
+
+                    <div>
+                        <strong>Dashboard initialized</strong>
+                        <small>DevOpsFlow frontend created</small>
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <span class="activity-dot blue"></span>
+
+                    <div>
+                        <strong>Backend integration</strong>
+                        <small>Node.js API connection in progress</small>
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <span class="activity-dot purple"></span>
+
+                    <div>
+                        <strong>DevOps setup</strong>
+                        <small>Docker and CI/CD integration pending</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="panel quick-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h3>Quick Actions</h3>
+                        <p>Common operations</p>
+                    </div>
+
+                </div>
+
+
+                <button class="action-button" id="newProjectBtn">
+                    <i data-lucide="plus"></i>
+                    New Project
+                </button>
+
+
+                <button class="action-button" id="viewPipelineBtn">
+                    <i data-lucide="workflow"></i>
+                    View Pipeline
+                </button>
+
+
+                <button class="action-button" id="monitorBtn">
+                    <i data-lucide="activity"></i>
+                    Check Monitoring
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            DevOpsFlow · Automated DevOps Lifecycle Management System
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
